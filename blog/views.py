@@ -26,4 +26,3 @@ def get_about(request):
 
 def get_contacts(request):
     return HttpResponse("black")
-print("123")
