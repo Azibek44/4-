@@ -1,5 +1,6 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+
+from blog.models import Post
 
 def get_index(request):
      context = {
@@ -19,3 +20,24 @@ def get_contacts(request):
        "title": "Как с нами связаться"
     }
     return render(request, "blog/contacts.html", context=context)
+
+def get_post(request, pk):
+    post = Post.objects.get(id=pk)
+    context = {
+        "post": post,
+    }
+    return render(request, "blog/post_detail.html", context)
+
+def post_create(request):
+    context = {
+        "title": ""
+    }
+    return render(request, 'blog/post_create.html', context=context)
+
+
+def post_update(request):
+    context = {
+        "title": ""
+    }
+    return render(request, 'blog/post_update.html', context=context)
+
